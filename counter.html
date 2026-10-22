@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Counter App + Theme Animation</title>
+
+
+  <style>
+
+    /* =========================================================
+       ANIMATIONS
+    ========================================================= */
+
+    @keyframes animation1 {
+
+      from {
+        opacity: 0;
+        transform: translateY(50px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    @keyframes animation2 {
+
+      from {
+        opacity: 0;
+        transform: scale(0.5);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+    }
+
+
+    @keyframes animation3 {
+
+      from {
+        opacity: 0;
+        transform: rotate(-20deg) scale(0.8);
+      }
+
+      to {
+        opacity: 1;
+        transform: rotate(0deg) scale(1);
+      }
+
+    }
+
+
+    @keyframes animation4 {
+
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+    }
+
+
+    @keyframes animation5 {
+
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+
+      50% {
+        opacity: 1;
+        transform: translateY(10px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+
+    @keyframes animation6 {
+
+      from {
+        opacity: 0;
+        transform: scale(1.5) rotate(10deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+
+    }
+
+
+    /* =========================================================
+       BODY
+    ========================================================= */
+
+    body {
+
+      margin: 0;
+
+      font-family: Arial, sans-serif;
+
+      min-height: 100vh;
+
+      background-color: white;
+
+      transition:
+        background-color 0.8s ease,
+        color 0.8s ease;
+
+      text-align: center;
+
+    }
+
+
+    /* =========================================================
+       MAIN HEADING
+    ========================================================= */
+
+    .main-heading {
+
+      margin-top: 30px;
+
+      transition:
+        color 0.8s ease,
+        transform 0.5s ease;
+
+    }
+
+
+    /* =========================================================
+       COUNTER CONTAINER
+    ========================================================= */
+
+    .container {
+
+      position: relative;
+
+      top: 30px;
+
+      margin: auto;
+
+      height: 250px;
+
+      width: 320px;
+
+      border: 10px double black;
+
+      border-radius: 5%;
+
+      background-color: orange;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      justify-content: center;
+
+      align-items: center;
+
+      transition:
+        background-color 0.8s ease,
+        transform 0.5s ease;
+
+    }
+
+
+    .container:hover {
+
+      transform: scale(1.03);
+
+    }
+
+
+    /* =========================================================
+       COUNTER HEADING
+    ========================================================= */
+
+    .container h1 {
+
+      width: 100%;
+
+      text-align: center;
+
+      margin: 0;
+
+    }
+
+
+    /* =========================================================
+       COUNTER VALUE
+    ========================================================= */
+
+    #count {
+
+      width: 100%;
+
+      text-align: center;
+
+      font-size: 40px;
+
+      font-weight: bold;
+
+    }
+
+
+    /* =========================================================
+       COUNTER BUTTONS
+    ========================================================= */
+
+    .negative,
+    .positive,
+    .Reset {
+
+      height: 30px;
+
+      border: 3px solid black;
+
+      display: flex;
+
+      justify-content: center;
+
+      align-items: center;
+
+      cursor: pointer;
+
+      transition:
+        transform 0.3s ease,
+        background-color 0.3s ease;
+
+    }
+
+
+    .negative:hover,
+    .positive:hover,
+    .Reset:hover {
+
+      transform: scale(1.1);
+
+    }
+
+
+    .negative {
+
+      width: 50px;
+
+      background-color: red;
+
+    }
+
+
+    .positive {
+
+      width: 50px;
+
+      background-color: greenyellow;
+
+    }
+
+
+    .Reset {
+
+      width: 60px;
+
+      background-color: black;
+
+      color: aliceblue;
+
+    }
+
+
+    /* =========================================================
+       RAM NAAM SECTION
+    ========================================================= */
+
+    .ram-heading {
+
+      margin-top: 100px;
+
+      font-size: 35px;
+
+      transition:
+        color 0.8s ease,
+        transform 0.5s ease;
+
+    }
+
+
+    .theme {
+
+      margin-top: 30px;
+
+      text-align: center;
+
+      font-size: 25px;
+
+      font-weight: bold;
+
+      transition:
+        color 0.8s ease,
+        transform 0.5s ease;
+
+    }
+
+
+    /* =========================================================
+       THEME BUTTONS
+    ========================================================= */
+
+    .theme-buttons {
+
+      margin-top: 30px;
+
+    }
+
+
+    button {
+
+      padding: 10px 15px;
+
+      margin: 5px;
+
+      border: 2px solid black;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+    }
+
+
+    button:hover {
+
+      transform: scale(1.1);
+
+      box-shadow:
+        0 5px 15px rgba(0, 0, 0, 0.4);
+
+    }
+
+
+    /* Individual button colors */
+
+    .theme1 {
+      background-color: orange;
+    }
+
+    .theme2 {
+      background-color: red;
+      color: white;
+    }
+
+    .theme3 {
+      background-color: pink;
+    }
+
+    .theme4 {
+      background-color: black;
+      color: white;
+    }
+
+    .theme5 {
+      background-color: purple;
+      color: white;
+    }
+
+    .theme6 {
+      background-color: brown;
+      color: white;
+    }
+
+
+  </style>
+
+</head>
+
+
+<body>
+
+
+  <!-- =========================================================
+       MAIN HEADING
+  ========================================================= -->
+
+  <h1 class="main-heading">
+    RAM NAAM COUNTER
+  </h1>
+
+
+  <!-- =========================================================
+       COUNTER APP
+  ========================================================= -->
+
+  <div class="container">
+
+    <h1>
+      Counter App
+    </h1>
+
+
+    <div id="count">
+      0
+    </div>
+
+
+    <!-- Negative Button -->
+
+    <div
+      class="negative"
+      onclick="decrement()">
+
+      -ve
+
+    </div>
+
+
+    <!-- Reset Button -->
+
+    <div
+      class="Reset"
+      onclick="reset()">
+
+      Reset
+
+    </div>
+
+
+    <!-- Positive Button -->
+
+    <div
+      class="positive"
+      onclick="increment()">
+
+      +ve
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       RAM NAAM SECTION
+  ========================================================= -->
+
+  <h1 class="ram-heading">
+    RAM NAAM
+  </h1>
+
+
+  <p class="theme">
+
+    RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM
+
+    RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM RAM
+
+  </p>
+
+
+  <!-- =========================================================
+       THEME BUTTONS
+  ========================================================= -->
+
+  <div class="theme-buttons">
+
+
+    <button
+      class="theme1"
+      onclick="color1()">
+
+      Theme 1
+
+    </button>
+
+
+    <button
+      class="theme2"
+      onclick="color2()">
+
+      Theme 2
+
+    </button>
+
+
+    <button
+      class="theme3"
+      onclick="color3()">
+
+      Theme 3
+
+    </button>
+
+
+    <button
+      class="theme4"
+      onclick="color4()">
+
+      Theme 4
+
+    </button>
+
+
+    <button
+      class="theme5"
+      onclick="color5()">
+
+      Theme 5
+
+    </button>
+
+
+    <button
+      class="theme6"
+      onclick="color6()">
+
+      Theme 6
+
+    </button>
+
+
+  </div>
+
+
+
+  <script>
+
+
+    /* =========================================================
+       SELECT ELEMENTS
+    ========================================================= */
+
+    let themeText =
+      document.getElementsByClassName("theme")[0];
+
+    let mainHeading =
+      document.getElementsByClassName("main-heading")[0];
+
+    let ramHeading =
+      document.getElementsByClassName("ram-heading")[0];
+
+
+
+    /* =========================================================
+       COMMON ANIMATION FUNCTION
+    ========================================================= */
+
+    function applyAnimation(animationName) {
+
+      themeText.style.animation = "none";
+
+      /*
+        offsetHeight forces the browser
+        to restart the animation.
+      */
+
+      themeText.offsetHeight;
+
+      themeText.style.animation =
+        animationName + " 1s ease-in-out";
+
+    }
+
+
+
+    /* =========================================================
+       THEME 1
+    ========================================================= */
+
+    function color1() {
+
+      document.body.style.backgroundColor =
+        "orange";
+
+      themeText.style.color =
+        "black";
+
+      mainHeading.style.color =
+        "black";
+
+      ramHeading.style.color =
+        "black";
+
+      applyAnimation("animation1");
+
+    }
+
+
+
+    /* =========================================================
+       THEME 2
+    ========================================================= */
+
+    function color2() {
+
+      document.body.style.backgroundColor =
+        "red";
+
+      themeText.style.color =
+        "yellow";
+
+      mainHeading.style.color =
+        "white";
+
+      ramHeading.style.color =
+        "white";
+
+      applyAnimation("animation2");
+
+    }
+
+
+
+    /* =========================================================
+       THEME 3
+    ========================================================= */
+
+    function color3() {
+
+      document.body.style.backgroundColor =
+        "pink";
+
+      themeText.style.color =
+        "blue";
+
+      mainHeading.style.color =
+        "blue";
+
+      ramHeading.style.color =
+        "blue";
+
+      applyAnimation("animation3");
+
+    }
+
+
+
+    /* =========================================================
+       THEME 4
+    ========================================================= */
+
+    function color4() {
+
+      document.body.style.backgroundColor =
+        "black";
+
+      themeText.style.color =
+        "white";
+
+      mainHeading.style.color =
+        "orange";
+
+      ramHeading.style.color =
+        "orange";
+
+      applyAnimation("animation4");
+
+    }
+
+
+
+    /* =========================================================
+       THEME 5
+    ========================================================= */
+
+    function color5() {
+
+      document.body.style.backgroundColor =
+        "purple";
+
+      themeText.style.color =
+        "white";
+
+      mainHeading.style.color =
+        "yellow";
+
+      ramHeading.style.color =
+        "white";
+
+      applyAnimation("animation5");
+
+    }
+
+
+
+    /* =========================================================
+       THEME 6
+    ========================================================= */
+
+    function color6() {
+
+      document.body.style.backgroundColor =
+        "brown";
+
+      themeText.style.color =
+        "orange";
+
+      mainHeading.style.color =
+        "white";
+
+      ramHeading.style.color =
+        "orange";
+
+      applyAnimation("animation6");
+
+    }
+
+
+
+    /* =========================================================
+       COUNTER
+    ========================================================= */
+
+    let count = 0;
+
+
+
+    /* =========================================================
+       INCREMENT
+    ========================================================= */
+
+    function increment() {
+
+      count++;
+
+      document.getElementById("count").innerHTML =
+        count;
+
+    }
+
+
+
+    /* =========================================================
+       DECREMENT
+    ========================================================= */
+
+    function decrement() {
+
+      count--;
+
+      document.getElementById("count").innerHTML =
+        count;
+
+    }
+
+
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
+    function reset() {
+
+      count = 0;
+
+      document.getElementById("count").innerHTML =
+        count;
+
+    }
+
+
+  </script>
+
+
+</body>
+
+</html>
